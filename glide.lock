@@ -1,0 +1,16 @@
+hash: ac5dd6338d697f0a820754146b9ebbbaabd703f4082d73b26e5f5c8c755976e7
+updated: 2016-06-30T22:27:23.294083932-07:00
+imports:
+- name: github.com/davidrjonas/hipchat-addon
+  version: d735b0d2e672c926da6374af74bd3f6479bdb34a
+- name: github.com/dgrijalva/jwt-go
+  version: 268038b363c7a8d7306b8e35bf77a1fde4b0c402
+- name: github.com/jmoiron/jsonq
+  version: e874b168d07ecc7808bc950a17998a8aa3141d82
+- name: github.com/Sirupsen/logrus
+  version: f3cfb454f4c209e6668c95216c4744b8fddb2356
+- name: golang.org/x/sys
+  version: 62bee037599929a6e9146f29d10dd5208c43507d
+  subpackages:
+  - unix
+devImports: []
