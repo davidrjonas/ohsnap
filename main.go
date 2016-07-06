@@ -65,7 +65,7 @@ func main() {
 	host = os.Getenv("OPENSHIFT_GO_IP")
 	port, _ := strconv.Atoi(os.Getenv("OPENSHIFT_GO_PORT"))
 	stateFilename = os.Getenv("OPENSHIFT_DATA_DIR") + "state"
-	urlBase = "https://yraquery-davidrjonas.rhcloud.com"
+	urlBase = "https://ohsnap-davidrjonas.rhcloud.com"
 
 	if urlBase == "" {
 		urlBase = fmt.Sprintf("http://%s:%d", host, port)
