@@ -49,7 +49,7 @@ func onYraQuery(a *addon.HipchatAddon, installation *addon.Installation, webhook
 			if err != nil {
 				msg = fmt.Sprintf("Error marshalling json: %q", err)
 			} else {
-				msg = string(b[:])
+				msg = "@djonas " + string(b[:])
 			}
 		} else {
 			// No error and not a query!
