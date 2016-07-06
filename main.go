@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"strings"
 
 	"github.com/Sirupsen/logrus"
 	"github.com/davidrjonas/hipchat-addon"
@@ -43,11 +44,16 @@ func onYraQuery(a *addon.HipchatAddon, installation *addon.Installation, webhook
 	case "kbussche":
 		msg = "You're a Qwerty."
 	case "djonas":
-		b, err := json.MarshalIndent(event, "", "  ")
-		if err != nil {
-			msg = fmt.Sprintf("Error marshalling json: %q", err)
+		if s, _ := jq.String("item", "message", "message"); strings.Contains(s, "debug") {
+			b, err := json.MarshalIndent(event, "", "  ")
+			if err != nil {
+				msg = fmt.Sprintf("Error marshalling json: %q", err)
+			} else {
+				msg = string(b[:])
+			}
 		} else {
-			msg = string(b[:])
+			// No error and not a query!
+			return nil
 		}
 	default:
 		msg = "You're a query."
