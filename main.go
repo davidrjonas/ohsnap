@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"flag"
 	"fmt"
 	"os"
@@ -42,7 +43,12 @@ func onYraQuery(a *addon.HipchatAddon, installation *addon.Installation, webhook
 	case "kbussche":
 		msg = "You're a Qwerty."
 	case "djonas":
-		msg = "Yay!"
+		b, err := json.MarshalIndent(event, "", "  ")
+		if err != nil {
+			msg = fmt.Sprintf("Error marshalling json: %q", err)
+		} else {
+			msg = string(b[:])
+		}
 	default:
 		msg = "You're a query."
 	}
