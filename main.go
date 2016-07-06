@@ -59,7 +59,7 @@ func onYraQuery(a *addon.HipchatAddon, installation *addon.Installation, webhook
 		msg = "You're a query."
 	}
 
-	if err := a.SendNotification(installation, &addon.Notification{Message: msg}); err != nil {
+	if err := a.SendNotification(installation, &addon.Notification{MessageFormat: "text", Message: msg}); err != nil {
 		logrus.Error(err)
 		return err
 	}
