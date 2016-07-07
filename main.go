@@ -42,7 +42,7 @@ func onYraQuery(a *addon.HipchatAddon, installation *addon.Installation, webhook
 
 	switch name {
 	case "kbussche":
-		msg = "You're a Qwerty."
+		msg = "@kbussche You're a qwerty."
 	case "djonas":
 		if s, _ := jq.String("item", "message", "message"); strings.Contains(s, "debug") {
 			b, err := json.MarshalIndent(event, "", "  ")
@@ -56,10 +56,20 @@ func onYraQuery(a *addon.HipchatAddon, installation *addon.Installation, webhook
 			return nil
 		}
 	default:
-		msg = "You're a query."
+		if name != "" {
+			msg = "@" + name + " You're a query."
+		} else {
+			msg = "You're a query."
+		}
 	}
 
-	if err := a.SendNotification(installation, &addon.Notification{MessageFormat: "text", Message: msg}); err != nil {
+	notification := &addon.Notification{
+		MessageFormat: "text",
+		Notify:        true,
+		Message:       msg,
+	}
+
+	if err := a.SendNotification(installation, notification); err != nil {
 		logrus.Error(err)
 		return err
 	}
