@@ -57,9 +57,9 @@ func onYraQuery(a *addon.HipchatAddon, installation *addon.Installation, webhook
 		}
 	default:
 		if name != "" {
-			msg = "@" + name + " You're a query."
+			msg = "@" + name + " You're a queryf."
 		} else {
-			msg = "You're a query."
+			msg = "You're a queryf."
 		}
 	}
 
@@ -100,10 +100,10 @@ func main() {
 			Key:         "ohsnap",
 			Vendor: &addon.Vendor{
 				Name: "davidrjonas",
-				Url:  "https://github.com/davidrjonas/hipchat-addon-ohsnap",
+				Url:  "https://github.com/davidrjonas/ohsnap",
 			},
 			Links: &addon.Links{
-				Homepage: "https://github.com/davidrjonas/hipchat-addon-ohsnap",
+				Homepage: "https://github.com/davidrjonas/ohsnap",
 				Self:     url("/capabilities.json"),
 			},
 			Capabilities: &addon.Capabilities{
